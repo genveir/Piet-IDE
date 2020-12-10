@@ -138,8 +138,8 @@ namespace Piet_IDE
 
         public void SetPixel(int dsPixelX, int dsPixelY, Color color)
         {
-            var basePixelX = dsPixelX / zoomFactor;
-            var basePixelY = dsPixelY / zoomFactor;
+            var basePixelX = (dsPixelX + xCenter) / zoomFactor;
+            var basePixelY = (dsPixelY + yCenter) / zoomFactor;
 
             if (basePixelX < 0 || basePixelX >= canvasses[0].Width ||
                 basePixelY < 0 || basePixelY >= canvasses[0].Height) return;

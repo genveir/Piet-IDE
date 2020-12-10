@@ -83,6 +83,8 @@ namespace Piet_IDE
 
                 (var top, var left, var bottom, var right, var dsWidth, var dsHeight) = GetImageBounds();
 
+                // mebbe do something so you can't scroll all of the image out of bounds
+
                 g.DrawImage(drawingState.GetWorkingCanvas(), left, top, dsWidth, dsHeight);
             }
 
