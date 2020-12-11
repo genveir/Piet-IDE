@@ -61,7 +61,7 @@ namespace PietExecutor
         {
             if (pixel.codel == null)
             {
-                if (pixel.color != codel.color) return;
+                if (pixel.color != codel.Color) return;
 
                 pixel.codel = codel;
                 codel.AddPixel(pixel);

@@ -128,8 +128,8 @@ namespace PietExecutor
 
         public Color color;
 
-        private int hue;
-        private int lightness;
+        public int hue;
+        public int lightness;
 
         private PietColor(string name, int hue, int lightness, Color color)
         {

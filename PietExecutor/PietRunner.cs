@@ -1,4 +1,5 @@
-﻿using PietExecutor.State;
+﻿using PietExecutor.Commands;
+using PietExecutor.State;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +26,19 @@ namespace PietExecutor
         {
             var currentCodel = this.state.CurrentCodel;
 
-            this.state.LastColor = currentCodel.color;
+            this.state.LastColor = currentCodel.Color;
+            this.state.CurrentValue = currentCodel.Size;
 
-            return FindExit(0);
+            var willContinue =  FindExit(0);
+
+            if (willContinue)
+            {
+                var command = ResolveCommand();
+
+                command.Execute(state);
+            }
+
+            return willContinue;
         }
 
         private bool FindExit(int attempts)
@@ -57,6 +68,18 @@ namespace PietExecutor
 
             this.state.CurrentCodel = proposedNextPixel.codel;
             return true;
+        }
+
+        private ICommand ResolveCommand()
+        {
+            if (state.LastColor == PietColor.White || state.CurrentCodel.Color == PietColor.White) return new Nop();
+
+            var hueDifference = (state.CurrentCodel.Color.hue - state.LastColor.hue + 6) % 6;
+            var lightnessDifference = (state.CurrentCodel.Color.lightness - state.LastColor.lightness + 3) % 3;
+
+            var command = Command.GetCommand(hueDifference, lightnessDifference);
+
+            return new Nop();
         }
     }
 }

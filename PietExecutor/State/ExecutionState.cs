@@ -12,7 +12,9 @@ namespace PietExecutor.State
             CodelChooser = new CodelChooser();
             CurrentCodel = topLeftCodel;
             LastColor = PietColor.White;
-            Stack = new List<int>();
+            CurrentValue = 0;
+            Stack = new RollingStack();
+            IO = new ConsoleWrapper();
         }
 
         public DirectionPointer DirectionPointer { get; }
@@ -23,6 +25,10 @@ namespace PietExecutor.State
 
         public PietColor LastColor { get; set; }
 
-        public List<int> Stack { get; }
+        public int CurrentValue { get; set; }
+
+        public RollingStack Stack { get; }
+
+        public IOWrapper IO { get; }
     }
 }

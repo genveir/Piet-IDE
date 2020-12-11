@@ -50,6 +50,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Codel.cs" />
+    <Compile Include="Commands\Add.cs" />
+    <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\Divide.cs" />
+    <Compile Include="Commands\Duplicate.cs" />
+    <Compile Include="Commands\Greater.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\InChar.cs" />
+    <Compile Include="Commands\InNumber.cs" />
+    <Compile Include="Commands\Mod.cs" />
+    <Compile Include="Commands\Multiply.cs" />
+    <Compile Include="Commands\Nop.cs" />
+    <Compile Include="Commands\Not.cs" />
+    <Compile Include="Commands\OutChar.cs" />
+    <Compile Include="Commands\OutNumber.cs" />
+    <Compile Include="Commands\Pointer.cs" />
+    <Compile Include="Commands\Pop.cs" />
+    <Compile Include="Commands\Push.cs" />
+    <Compile Include="Commands\Roll.cs" />
+    <Compile Include="Commands\Subtract.cs" />
+    <Compile Include="Commands\Switch.cs" />
     <Compile Include="PietColor.cs" />
     <Compile Include="PietRunner.cs" />
     <Compile Include="Pixel.cs" />
@@ -58,6 +78,8 @@
     <Compile Include="State\CodelChooser.cs" />
     <Compile Include="State\DirectionPointer.cs" />
     <Compile Include="State\ExecutionState.cs" />
+    <Compile Include="State\IOWrapper.cs" />
+    <Compile Include="State\RollingStack.cs" />
     <Compile Include="Tests\CodelTests.cs" />
     <Compile Include="Tests\RunnerTests.cs" />
   </ItemGroup>

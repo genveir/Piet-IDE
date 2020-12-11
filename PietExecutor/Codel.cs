@@ -9,17 +9,19 @@ namespace PietExecutor
     public class Codel
     {
         private List<Pixel> pixels;
-        public PietColor color;
-
+        
         private (int x, int y)[] ExitsFromCodel;
 
         private int?[] DPCheckVals;
         private int?[][] CCCheckVals;
 
+        public int Size => pixels.Count;
+        public PietColor Color { get; }
+
         public Codel(PietColor color)
         {
             this.pixels = new List<Pixel>();
-            this.color = color;
+            this.Color = color;
 
             this.DPCheckVals = new int?[4];
             this.CCCheckVals = new int?[4][];
@@ -36,11 +38,6 @@ namespace PietExecutor
         public Codel(PietColor color, IEnumerable<Pixel> pixels) :this(color)
         {
             foreach (var pixel in pixels) AddPixel(pixel);
-        }
-
-        public IEnumerable<Pixel> GetPixels()
-        {
-            return this.pixels;
         }
 
         public void AddPixel(Pixel pixel)
@@ -114,7 +111,7 @@ namespace PietExecutor
 
         public override string ToString()
         {
-            return $"{color} size {pixels.Count}";
+            return $"{Color} size {pixels.Count}";
         }
 
         public (int x, int y) GetExitPixel(DirectionPointer DP, CodelChooser CC)
