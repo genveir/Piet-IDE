@@ -67,6 +67,30 @@ namespace PietExecutor
             CheckBothCodelDirections(directionPointer, codel, codelChooser, (1, 0), (3, 0));
         }
 
+        [Test]
+        public void BarHasCorrectExitsIfPixelsAreInsertedOtherWayAround()
+        {
+            var codel = new Codel(PietColor.Red);
+            for (int y = 2; y >= 1; y--)
+            {
+                for (int x = 3; x >= 1; x--)
+                {
+                    codel.AddPixel(new Pixel(x, y, PietColor.Red));
+                }
+            }
+
+            var directionPointer = new DirectionPointer(); // right
+            var codelChooser = new CodelChooser();
+
+            CheckBothCodelDirections(directionPointer, codel, codelChooser, (4, 1), (4, 2));
+            directionPointer.Cycle(); // down
+            CheckBothCodelDirections(directionPointer, codel, codelChooser, (3, 3), (1, 3));
+            directionPointer.Cycle(); // left
+            CheckBothCodelDirections(directionPointer, codel, codelChooser, (0, 2), (0, 1));
+            directionPointer.Cycle(); // up
+            CheckBothCodelDirections(directionPointer, codel, codelChooser, (1, 0), (3, 0));
+        }
+
         /*
          * 0
          * 1   R R
