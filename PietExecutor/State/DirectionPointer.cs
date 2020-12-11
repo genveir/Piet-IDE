@@ -11,7 +11,7 @@ namespace PietExecutor.State
         public const int DP_LEFT = 2;
         public const int DP_UP = 3;
 
-        private int currentValue;
+        public int currentValue;
 
         public DirectionPointer()
         {

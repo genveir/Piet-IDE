@@ -15,44 +15,51 @@ namespace PietExecutor
         public static PietColor White;
         public static PietColor Black;
 
+        public static PietColor LightRed, Red, DarkRed;
+        public static PietColor LightYellow, Yellow, DarkYellow;
+        public static PietColor LightGreen, Green, DarkGreen;
+        public static PietColor LightCyan, Cyan, DarkCyan;
+        public static PietColor LightBlue, Blue, DarkBlue;
+        public static PietColor LightMagenta, Magenta, DarkMagenta;
+
         static PietColor()
         {
             Colors = new PietColor[6][];
-            Colors[0] = new PietColor[] 
-            { 
-                new PietColor("light red", 0, 2, Color.FromArgb(255, 192, 192)), 
-                new PietColor("red", 0, 1, Color.FromArgb(255, 0, 0))  , 
-                new PietColor("dark red", 0, 0, Color.FromArgb(192, 0, 0)) 
+            Colors[0] = new PietColor[]
+            {
+                new PietColor("light red", 0, 2, Color.FromArgb(255, 192, 192)),
+                new PietColor("red", 0, 1, Color.FromArgb(255, 0, 0))  ,
+                new PietColor("dark red", 0, 0, Color.FromArgb(192, 0, 0))
             }; // red
-            Colors[1] = new PietColor[] 
-            { 
-                new PietColor("light yellow", 5, 2, Color.FromArgb(255, 255, 192)), 
-                new PietColor("yellow", 5, 1, Color.FromArgb(255, 255, 0)), 
-                new PietColor("dark yellow", 5, 0, Color.FromArgb(192, 192, 0)) 
+            Colors[1] = new PietColor[]
+            {
+                new PietColor("light yellow", 5, 2, Color.FromArgb(255, 255, 192)),
+                new PietColor("yellow", 5, 1, Color.FromArgb(255, 255, 0)),
+                new PietColor("dark yellow", 5, 0, Color.FromArgb(192, 192, 0))
             }; // yellow
-            Colors[2] = new PietColor[] 
-            { 
-                new PietColor("light green", 1, 2, Color.FromArgb(192, 255, 192)), 
-                new PietColor("green", 1, 1, Color.FromArgb(0, 255, 0))  , 
-                new PietColor("dark green", 1, 0, Color.FromArgb(0, 192, 0)) 
+            Colors[2] = new PietColor[]
+            {
+                new PietColor("light green", 1, 2, Color.FromArgb(192, 255, 192)),
+                new PietColor("green", 1, 1, Color.FromArgb(0, 255, 0))  ,
+                new PietColor("dark green", 1, 0, Color.FromArgb(0, 192, 0))
             }; // green
-            Colors[3] = new PietColor[] 
-            { 
-                new PietColor("light cyan", 2, 2, Color.FromArgb(192, 255, 255)), 
-                new PietColor("cyan", 2, 1, Color.FromArgb(0, 255, 255)), 
-                new PietColor("dark cyan", 2, 0, Color.FromArgb(0, 192, 192)) 
+            Colors[3] = new PietColor[]
+            {
+                new PietColor("light cyan", 2, 2, Color.FromArgb(192, 255, 255)),
+                new PietColor("cyan", 2, 1, Color.FromArgb(0, 255, 255)),
+                new PietColor("dark cyan", 2, 0, Color.FromArgb(0, 192, 192))
             }; // cyan
-            Colors[4] = new PietColor[] 
-            { 
-                new PietColor("light blue", 3, 2, Color.FromArgb(192, 192, 255)), 
-                new PietColor("blue", 3, 1, Color.FromArgb(0, 0, 255))  , 
-                new PietColor("dark blue", 3, 0, Color.FromArgb(0, 0, 192)) 
+            Colors[4] = new PietColor[]
+            {
+                new PietColor("light blue", 3, 2, Color.FromArgb(192, 192, 255)),
+                new PietColor("blue", 3, 1, Color.FromArgb(0, 0, 255))  ,
+                new PietColor("dark blue", 3, 0, Color.FromArgb(0, 0, 192))
             }; // blue
-            Colors[5] = new PietColor[] 
-            { 
-                new PietColor("light magenta", 4, 2, Color.FromArgb(255, 192, 255)), 
-                new PietColor("magenta", 4, 1, Color.FromArgb(255, 0, 255)), 
-                new PietColor("dark magenta", 4, 0, Color.FromArgb(192, 0, 192)) 
+            Colors[5] = new PietColor[]
+            {
+                new PietColor("light magenta", 4, 2, Color.FromArgb(255, 192, 255)),
+                new PietColor("magenta", 4, 1, Color.FromArgb(255, 0, 255)),
+                new PietColor("dark magenta", 4, 0, Color.FromArgb(192, 0, 192))
             };  // magenta
 
             White = new PietColor("white", -100, 100, Color.White);
@@ -69,6 +76,30 @@ namespace PietExecutor
             }
             argbPietColors.Add(White.color.ToArgb(), White);
             argbPietColors.Add(Black.color.ToArgb(), Black);
+
+            LightRed = Colors[0][0];
+            Red = Colors[0][1];
+            DarkRed = Colors[0][2];
+
+            LightYellow = Colors[1][0];
+            Yellow = Colors[1][1];
+            DarkYellow = Colors[1][2];
+
+            LightGreen = Colors[2][0];
+            Green = Colors[2][1];
+            DarkGreen = Colors[2][2];
+
+            LightCyan = Colors[3][0];
+            Cyan = Colors[3][1];
+            DarkCyan = Colors[3][2];
+
+            LightBlue = Colors[4][0];
+            Blue = Colors[4][1];
+            DarkBlue = Colors[4][2];
+
+            LightMagenta = Colors[5][0];
+            Magenta = Colors[5][1];
+            DarkMagenta = Colors[5][2];
         }
 
         public static PietColor FromColor(Color color)

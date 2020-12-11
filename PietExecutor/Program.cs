@@ -10,8 +10,7 @@ namespace PietExecutor
 {
     public class Program
     {
-        private Pixel[][] pixels;
-        private List<Codel> codels;
+        public Pixel[][] pixels;
 
         public Program(string fileName)  
         {
@@ -32,7 +31,6 @@ namespace PietExecutor
                 }
             }
 
-            codels = new List<Codel>();
             for (int y = 0; y < pixels.Length; y++)
             {
                 for (int x = 0; x < pixels[y].Length; x++)
@@ -42,8 +40,6 @@ namespace PietExecutor
                         var pixel = pixels[y][x];
                         var codel = new Codel(pixel.color);
                         ResolveCodel(pixel, codel);
-
-                        codels.Add(codel);
                     }
                 }
             }
@@ -58,7 +54,7 @@ namespace PietExecutor
                 if (pixel.color != codel.color) return;
 
                 pixel.codel = codel;
-                codel.pixels.Add(pixel);
+                codel.AddPixel(pixel);
 
                 // white and black pixels are their own codels
                 if (pixel.color == PietColor.White) return;

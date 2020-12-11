@@ -9,7 +9,7 @@ namespace PietExecutor.State
         public const int CC_LEFT = 0;
         public const int CC_RIGHT = 1;
 
-        private int currentValue;
+        public int currentValue;
         public CodelChooser()
         {
             currentValue = CC_LEFT;
