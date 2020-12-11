@@ -59,6 +59,7 @@ namespace Piet_IDE
             whiteBox.Left = 10;
             whiteBox.Top = 10 + 3 * (palSize + 5);
             whiteBox.Tag = PietColor.White;
+            whiteBox.MouseDown += InitColorCallback;
             whiteBox.MouseUp += CallbackWithColor;
             this.Controls.Add(whiteBox);
 
@@ -70,6 +71,7 @@ namespace Piet_IDE
             blackBox.Left = 25 + 3 * palSize;
             blackBox.Top = 10 + 3 * (palSize + 5);
             blackBox.Tag = PietColor.Black;
+            blackBox.MouseDown += InitColorCallback;
             blackBox.MouseUp += CallbackWithColor;
             this.Controls.Add(blackBox);
 
@@ -113,7 +115,7 @@ namespace Piet_IDE
         private void Picker_Load(object sender, EventArgs e)
         {
             var screen = Screen.FromPoint(new Point(1, 1));
-            this.Location = new Point(screen.WorkingArea.Right - this.Width, screen.WorkingArea.Top);
+            this.Location = new Point(screen.WorkingArea.Right - this.Width, screen.WorkingArea.Top + 20);
         }
     }
 }

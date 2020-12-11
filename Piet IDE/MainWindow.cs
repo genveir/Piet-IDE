@@ -22,7 +22,6 @@ namespace Piet_IDE
             var scr = Screen.FromPoint(this.Location);
 
             new Picker(this).Show();
-            new FileManager(this).Show();
 
             ActiveColor = PietColor.White;
 
@@ -53,14 +52,31 @@ namespace Piet_IDE
 
         private DrawingState drawingState;
 
-        public void SaveState()
+        private void SaveStateHandler(object sender, EventArgs e)
         {
-            drawingState.Save(@"d:\temp\piet\program.bmp");
+            var saveDialog = new SaveFileDialog();
+            saveDialog.InitialDirectory = @"d:\temp\piet";
+            saveDialog.Filter = "Bitmap|*.bmp";
+            saveDialog.FileOk += SaveDialog_FileOk;
+            saveDialog.ShowDialog();
+        }
+        private void SaveDialog_FileOk(object sender, CancelEventArgs e)
+        {
+            var saveDialog = (SaveFileDialog)sender;
+            drawingState.Save(saveDialog.FileName);
         }
 
-        public void LoadState()
+        private void LoadStateHandler(object sender, EventArgs e)
         {
-            drawingState = DrawingState.Load(@"d:\temp\piet\program.bmp");
+            var openDialog = new OpenFileDialog();
+            openDialog.InitialDirectory = @"d:\temp\piet";
+            openDialog.FileOk += Dialog_FileOk;
+            openDialog.ShowDialog();
+        }
+        private void Dialog_FileOk(object sender, CancelEventArgs e)
+        {
+            var dialog = (OpenFileDialog)sender;
+            drawingState = DrawingState.Load(dialog.FileName);
 
             this.Invalidate();
         }
@@ -69,7 +85,7 @@ namespace Piet_IDE
         {
             img = new Bitmap(this.Width, this.Height);
 
-            drawingState = new DrawingState(1, 1);
+            drawingState = new DrawingState(10, 10);
 
             this.Invalidate();
         }
