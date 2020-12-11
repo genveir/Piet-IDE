@@ -21,7 +21,7 @@ namespace Piet_IDE
         private void SaveDialog_FileOk(object sender, CancelEventArgs e)
         {
             var saveDialog = (SaveFileDialog)sender;
-            drawingState.Save(saveDialog.FileName);
+            SaveState(saveDialog.FileName);
         }
 
         private void LoadStateHandler(object sender, EventArgs e)
@@ -34,9 +34,19 @@ namespace Piet_IDE
         private void Dialog_FileOk(object sender, CancelEventArgs e)
         {
             var dialog = (OpenFileDialog)sender;
-            drawingState = DrawingState.Load(dialog.FileName);
+            LoadState(dialog.FileName);
 
             this.Invalidate();
+        }
+
+        private void LoadState(string fileName)
+        {
+            drawingState = DrawingState.Load(fileName);
+        }
+
+        private void SaveState(string fileName)
+        {
+            drawingState.Save(fileName);
         }
     }
 }

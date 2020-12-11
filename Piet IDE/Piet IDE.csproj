@@ -60,7 +60,6 @@
     <Compile Include="Picker.Designer.cs">
       <DependentUpon>Picker.cs</DependentUpon>
     </Compile>
-    <Compile Include="PietColor.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,7 +67,6 @@
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.Files.cs">
-      <DependentUpon>MainWindow.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Program.cs" />
@@ -101,6 +99,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PietExecutor\PietExecutor.csproj">
+      <Project>{68c42296-c6fc-4b79-b4bf-3b8bdd8dbfea}</Project>
+      <Name>PietExecutor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PietExecutor;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -152,6 +153,13 @@ namespace Piet_IDE
         {
             img = new Bitmap(this.Width, this.Height);
             this.Invalidate();
+        }
+
+        private void runToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.SaveState(@".\lastExecuted.bmp");
+
+            var program = new PietExecutor.Program(@".\lastExecuted.bmp");
         }
     }
 }
