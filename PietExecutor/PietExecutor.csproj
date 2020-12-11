@@ -58,7 +58,8 @@
     <Compile Include="State\CodelChooser.cs" />
     <Compile Include="State\DirectionPointer.cs" />
     <Compile Include="State\ExecutionState.cs" />
-    <Compile Include="Tests.cs" />
+    <Compile Include="Tests\CodelTests.cs" />
+    <Compile Include="Tests\RunnerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

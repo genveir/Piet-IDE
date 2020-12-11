@@ -19,9 +19,9 @@ namespace PietExecutor.State
 
         public CodelChooser CodelChooser { get; }
 
-        public Codel CurrentCodel { get; }
+        public Codel CurrentCodel { get; set; }
 
-        public PietColor LastColor { get; }
+        public PietColor LastColor { get; set; }
 
         public List<int> Stack { get; }
     }

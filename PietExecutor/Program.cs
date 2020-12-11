@@ -10,9 +10,16 @@ namespace PietExecutor
 {
     public class Program
     {
-        public Pixel[][] pixels;
+        private Pixel[][] pixels;
 
-        public Program(string fileName)  
+        internal Program(Pixel[][] pixels)
+        {
+            this.pixels = pixels;
+
+            ResolveCodels();
+        }
+
+        public Program(string fileName)
         {
             var bitMap = new Bitmap(Image.FromFile(fileName));
 
@@ -31,6 +38,11 @@ namespace PietExecutor
                 }
             }
 
+            ResolveCodels();
+        }
+
+        private void ResolveCodels() 
+        { 
             for (int y = 0; y < pixels.Length; y++)
             {
                 for (int x = 0; x < pixels[y].Length; x++)
@@ -43,8 +55,6 @@ namespace PietExecutor
                     }
                 }
             }
-
-            var executionState = new ExecutionState(pixels[0][0].codel);
         }
 
         private void ResolveCodel(Pixel pixel, Codel codel)
@@ -81,6 +91,16 @@ namespace PietExecutor
             bitmap.UnlockBits(readBits);
 
             return bmpValues;
+        }
+
+        static Pixel BorderPixel = new Pixel(-1, -1, PietColor.Black);
+        public Pixel GetPixel(int x, int y)
+        {
+            if (x < 0 || x > pixels[0].Length - 1 ||
+                y < 0 || y > pixels.Length - 1 ||
+                pixels[y][x] == null) return BorderPixel;
+
+            else return pixels[y][x];
         }
     }
 }

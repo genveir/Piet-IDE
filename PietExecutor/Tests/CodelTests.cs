@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PietExecutor
+namespace PietExecutor.Tests
 {
-    class Tests
+    class CodelTests
     {
         /*
          * 0   
