@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PietExecutor
 {
-    public struct Codel
+    public class Codel
     {
         public List<Pixel> pixels;
         public PietColor color;
@@ -23,6 +23,11 @@ namespace PietExecutor
         public Codel(PietColor color, IEnumerable<Pixel> pixels) :this(color)
         {
             this.pixels.AddRange(pixels);
+        }
+
+        public override string ToString()
+        {
+            return $"{color} size {pixels.Count}";
         }
     }
 }

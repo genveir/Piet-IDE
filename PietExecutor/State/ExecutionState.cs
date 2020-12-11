@@ -4,13 +4,22 @@ using System.Text;
 
 namespace PietExecutor.State
 {
-    public struct ExecutionState
+    public class ExecutionState
     {
+        public ExecutionState(Codel topLeftCodel)
+        {
+            DirectionPointer = new DirectionPointer();
+            CodelChooser = new CodelChooser();
+            CurrentCodel = topLeftCodel;
+            LastColor = PietColor.White;
+            Stack = new List<int>();
+        }
+
         public DirectionPointer DirectionPointer { get; }
 
         public CodelChooser CodelChooser { get; }
 
-        public Nullable<Codel> CurrentCodel { get; }
+        public Codel CurrentCodel { get; }
 
         public PietColor LastColor { get; }
 
