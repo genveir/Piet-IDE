@@ -1,4 +1,5 @@
 ﻿using PietExecutor;
+using PietExecutor.State;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -159,7 +160,15 @@ namespace Piet_IDE
         {
             this.SaveState(@".\lastExecuted.bmp");
 
+            var stack = new EventRaisingStack(new RollingStack());
+            var io = new IOForm();
+            io.Show();
+
             var program = new PietExecutor.Program(@".\lastExecuted.bmp");
+
+            var executor = new PietRunner(program, io, stack);
+
+            executor.Run();
         }
     }
 }

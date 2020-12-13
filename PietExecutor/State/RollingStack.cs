@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PietExecutor.State
 {
-    public class RollingStack
+    public class RollingStack : IRollingStack
     {
         private int[] data;
         private int cursor;
@@ -45,7 +45,7 @@ namespace PietExecutor.State
             {
                 numberOfRolls = rollDepth + 1 + numberOfRolls;
             }
-            
+
             var indexAtDepth = cursor - rollDepth;
 
             if (indexAtDepth < 0) return;
@@ -58,9 +58,9 @@ namespace PietExecutor.State
                     data[cursor - r] = data[cursor - r - 1];
                 }
                 data[indexAtDepth] = buffer;
-            }  
+            }
         }
 
-        public int Count => cursor  + 1;
+        public int Count => cursor + 1;
     }
 }

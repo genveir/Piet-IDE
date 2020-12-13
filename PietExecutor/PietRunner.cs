@@ -13,30 +13,37 @@ namespace PietExecutor
         private Program program;
         private ExecutionState state;
 
+        // useful for tests
         internal PietRunner(Program program, ExecutionState state)
         {
             this.program = program;
-            
-            if (state == null) state = new ExecutionState(program.GetPixel(0, 0).codel);
             this.state = state;
         }
-        public PietRunner(Program program) : this(program, null) { }
+
+        public PietRunner(Program program) : this(program, new ConsoleWrapper(), new RollingStack()) { }
+
+        public PietRunner(Program program, IOWrapper io, IRollingStack stack)
+        {
+            this.program = program;
+            this.state = new ExecutionState(program.GetPixel(0, 0).codel, io, stack);
+        }
+
+        public void Run()
+        {
+            while (ExecuteStep()) { }
+        }
 
         public bool ExecuteStep()
         {
             var currentCodel = this.state.CurrentCodel;
 
+            var command = ResolveCommand();
+            command.Execute(state);
+
             this.state.LastColor = currentCodel.Color;
             this.state.CurrentValue = currentCodel.Size;
 
-            var willContinue =  FindExit(0);
-
-            if (willContinue)
-            {
-                var command = ResolveCommand();
-
-                command.Execute(state);
-            }
+            var willContinue = FindExit(0);
 
             return willContinue;
         }
@@ -74,12 +81,10 @@ namespace PietExecutor
         {
             if (state.LastColor == PietColor.White || state.CurrentCodel.Color == PietColor.White) return new Nop();
 
-            var hueDifference = (state.CurrentCodel.Color.hue - state.LastColor.hue + 6) % 6;
-            var lightnessDifference = (state.CurrentCodel.Color.lightness - state.LastColor.lightness + 3) % 3;
+            var hueDifference = (state.LastColor.hue - state.CurrentCodel.Color.hue + 6) % 6;
+            var lightnessDifference = (state.LastColor.lightness - state.CurrentCodel.Color.lightness + 3) % 3;
 
-            var command = Command.GetCommand(hueDifference, lightnessDifference);
-
-            return new Nop();
+            return Command.GetCommand(hueDifference, lightnessDifference);
         }
     }
 }

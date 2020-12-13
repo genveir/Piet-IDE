@@ -6,15 +6,15 @@ namespace PietExecutor.State
 {
     public class ExecutionState
     {
-        public ExecutionState(Codel topLeftCodel)
+        public ExecutionState(Codel topLeftCodel, IOWrapper io = null, IRollingStack stack = null)
         {
             DirectionPointer = new DirectionPointer();
             CodelChooser = new CodelChooser();
             CurrentCodel = topLeftCodel;
             LastColor = PietColor.White;
             CurrentValue = 0;
-            Stack = new RollingStack();
-            IO = new ConsoleWrapper();
+            Stack = stack ?? new RollingStack();
+            IO = io ?? new ConsoleWrapper();
         }
 
         public DirectionPointer DirectionPointer { get; }
@@ -27,7 +27,7 @@ namespace PietExecutor.State
 
         public int CurrentValue { get; set; }
 
-        public RollingStack Stack { get; }
+        public IRollingStack Stack { get; }
 
         public IOWrapper IO { get; }
     }
