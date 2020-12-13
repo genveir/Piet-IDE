@@ -82,6 +82,7 @@
     <Compile Include="State\RollingStack.cs" />
     <Compile Include="Tests\CodelTests.cs" />
     <Compile Include="Tests\RunnerTests.cs" />
+    <Compile Include="Tests\StackTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
