@@ -41,23 +41,24 @@ namespace PietExecutor.State
             // A negative number of rolls rolls in the opposite direction. A negative depth is an error and the command is ignored.
 
             if (rollDepth <= 0) return;
-
-            if (numberOfRolls > 0)
+            if (numberOfRolls < 0)
             {
-                var indexAtDepth = cursor - rollDepth;
-
-                if (indexAtDepth < 0) return;
-
-                for (int n = 0; n < numberOfRolls; n++)
-                {
-                    int buffer = data[cursor];
-                    for (int r = 0; r < rollDepth; r++)
-                    {
-                        data[cursor - r] = data[cursor - r - 1];
-                    }
-                    data[indexAtDepth] = buffer;
-                }
+                numberOfRolls = rollDepth + 1 + numberOfRolls;
             }
+            
+            var indexAtDepth = cursor - rollDepth;
+
+            if (indexAtDepth < 0) return;
+
+            for (int n = 0; n < numberOfRolls; n++)
+            {
+                int buffer = data[cursor];
+                for (int r = 0; r < rollDepth; r++)
+                {
+                    data[cursor - r] = data[cursor - r - 1];
+                }
+                data[indexAtDepth] = buffer;
+            }  
         }
 
         public int Count => cursor  + 1;
