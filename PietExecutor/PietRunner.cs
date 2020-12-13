@@ -81,8 +81,8 @@ namespace PietExecutor
         {
             if (state.LastColor == PietColor.White || state.CurrentCodel.Color == PietColor.White) return new Nop();
 
-            var hueDifference = (state.LastColor.hue - state.CurrentCodel.Color.hue + 6) % 6;
-            var lightnessDifference = (state.LastColor.lightness - state.CurrentCodel.Color.lightness + 3) % 3;
+            var hueDifference = (state.CurrentCodel.Color.hue - state.LastColor.hue + 6) % 6;
+            var lightnessDifference = (state.CurrentCodel.Color.lightness - state.LastColor.lightness + 3) % 3;
 
             return Command.GetCommand(hueDifference, lightnessDifference);
         }
