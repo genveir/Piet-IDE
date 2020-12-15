@@ -20,7 +20,7 @@ namespace PietExecutor
             this.state = state;
         }
 
-        public PietRunner(Program program) : this(program, new ConsoleWrapper(), new RollingStack(), new Configuration) { }
+        public PietRunner(Program program) : this(program, new ConsoleWrapper(), new RollingStack(), new Configuration()) { }
 
         public PietRunner(Program program, IOWrapper io, IRollingStack stack, Configuration config = null)
         {
