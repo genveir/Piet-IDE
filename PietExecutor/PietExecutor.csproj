@@ -71,6 +71,8 @@
     <Compile Include="Commands\Subtract.cs" />
     <Compile Include="Commands\Switch.cs" />
     <Compile Include="Configuration.cs" />
+    <Compile Include="IO\ConsoleWrapper.cs" />
+    <Compile Include="IO\InputFileIODecorator.cs" />
     <Compile Include="PietColor.cs" />
     <Compile Include="PietRunner.cs" />
     <Compile Include="Pixel.cs" />
@@ -79,7 +81,7 @@
     <Compile Include="State\CodelChooser.cs" />
     <Compile Include="State\DirectionPointer.cs" />
     <Compile Include="State\ExecutionState.cs" />
-    <Compile Include="State\IOWrapper.cs" />
+    <Compile Include="IO\IOWrapper.cs" />
     <Compile Include="State\IRollingStack.cs" />
     <Compile Include="State\RollingStack.cs" />
     <Compile Include="Tests\CodelTests.cs" />

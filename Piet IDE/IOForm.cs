@@ -1,4 +1,5 @@
-﻿using PietExecutor.State;
+﻿using PietExecutor.IO;
+using PietExecutor.State;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,12 +23,14 @@ namespace Piet_IDE
 
         Queue<char> typedChars;
 
+        public bool HasRead()
+        {
+            return typedChars.Count > 0;
+        }
+
         public char Read()
         {
-            while(typedChars.Count == 0)
-            {
-                Application.DoEvents();
-            }
+            if (typedChars.Count == 0) return (char)0;
 
             return typedChars.Dequeue();
         }

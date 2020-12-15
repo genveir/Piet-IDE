@@ -4,19 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PietExecutor.State
+namespace PietExecutor.IO
 {
-    public interface IOWrapper
-    {
-        bool HasRead();
-
-        char Read();
-
-        void WriteChar(char toWrite);
-
-        void WriteNum(int toWrite);
-    }
-
     public class ConsoleWrapper : IOWrapper
     {
         // -2 = not set, -1 is nothing to read
@@ -32,6 +21,7 @@ namespace PietExecutor.State
         {
             HasRead();
 
+            if (peek < 0) peek = 0; // chars cant be negative, lets be explicit on what we return
             var result = (char)peek;
             peek = -2;
 
