@@ -70,6 +70,7 @@
     <Compile Include="Commands\Roll.cs" />
     <Compile Include="Commands\Subtract.cs" />
     <Compile Include="Commands\Switch.cs" />
+    <Compile Include="Configuration.cs" />
     <Compile Include="PietColor.cs" />
     <Compile Include="PietRunner.cs" />
     <Compile Include="Pixel.cs" />

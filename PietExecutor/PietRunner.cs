@@ -20,12 +20,15 @@ namespace PietExecutor
             this.state = state;
         }
 
-        public PietRunner(Program program) : this(program, new ConsoleWrapper(), new RollingStack()) { }
+        public PietRunner(Program program) : this(program, new ConsoleWrapper(), new RollingStack(), new Configuration) { }
 
-        public PietRunner(Program program, IOWrapper io, IRollingStack stack)
+        public PietRunner(Program program, IOWrapper io, IRollingStack stack, Configuration config = null)
         {
             this.program = program;
             this.state = new ExecutionState(program.GetPixel(0, 0).codel, io, stack);
+
+            if (config == null) config = new Configuration();
+            Configuration.Current = config;
         }
 
         public void Run()

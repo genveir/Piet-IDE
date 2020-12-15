@@ -37,6 +37,9 @@ namespace PietExecutor.State
 
         public void Roll(int numberOfRolls, int rollDepth)
         {
+            // npiet uses 1-based stack rolling. I disagree that that is correct, but I'll make it a configurable option
+            if (Configuration.Current.Use1BasedStackRolling) if (rollDepth != 0) rollDepth -= 1;
+
             // A single roll to depth n is defined as burying the top value on the stack n deep and bringing all values above it up by 1 place.
             // A negative number of rolls rolls in the opposite direction. A negative depth is an error and the command is ignored.
 
