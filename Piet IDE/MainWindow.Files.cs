@@ -14,7 +14,7 @@ namespace Piet_IDE
         {
             var saveDialog = new SaveFileDialog();
             saveDialog.InitialDirectory = @"d:\temp\piet";
-            saveDialog.Filter = "Bitmap|*.bmp";
+            saveDialog.Filter = "BMP|*.bmp|PNG|*.png|All files|*.*";
             saveDialog.FileOk += SaveDialog_FileOk;
             saveDialog.ShowDialog();
         }

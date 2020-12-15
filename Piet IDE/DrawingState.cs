@@ -167,7 +167,10 @@ namespace Piet_IDE
 
         public void Save(string path)
         {
-            canvasses[0].Save(path);
+            using (var fs = new FileStream(path, FileMode.Create))
+            {
+                canvasses[0].Save(fs, ImageFormat.Png);
+            }
         }
     }
 }

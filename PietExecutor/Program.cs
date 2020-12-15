@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -21,7 +22,7 @@ namespace PietExecutor
 
         public Program(string fileName)
         {
-            var bitMap = new Bitmap(Image.FromFile(fileName));
+            var bitMap = new Bitmap(Image.FromStream(new MemoryStream(File.ReadAllBytes(fileName))));
 
             var bytes = GetBytes(bitMap);
 
