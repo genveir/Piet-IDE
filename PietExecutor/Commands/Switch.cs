@@ -9,7 +9,7 @@ namespace PietExecutor.Commands
 {
     class Switch : ICommand
     {
-        public void Execute(ExecutionState state)
+        public bool Execute(ExecutionState state)
         {
             var stack = state.Stack;
 
@@ -23,6 +23,8 @@ namespace PietExecutor.Commands
 
                 for (int n = 0; n < toCycle; n++) state.CodelChooser.Cycle();
             }
+
+            return true;
         }
     }
 }

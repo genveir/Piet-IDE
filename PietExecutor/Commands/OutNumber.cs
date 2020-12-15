@@ -9,7 +9,7 @@ namespace PietExecutor.Commands
 {
     class OutNumber : ICommand
     {
-        public void Execute(ExecutionState state)
+        public bool Execute(ExecutionState state)
         {
             var stack = state.Stack;
 
@@ -17,6 +17,8 @@ namespace PietExecutor.Commands
             {
                 state.IO.WriteNum(stack.Pop());
             }
+
+            return true;
         }
     }
 }

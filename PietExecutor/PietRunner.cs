@@ -40,13 +40,17 @@ namespace PietExecutor
         {
             var currentCodel = this.state.CurrentCodel;
 
+            bool willContinue;
+
             var command = ResolveCommand();
-            command.Execute(state);
+            if (command.Execute(state))
+            {
+                this.state.LastColor = currentCodel.Color;
+                this.state.CurrentValue = currentCodel.Size;
 
-            this.state.LastColor = currentCodel.Color;
-            this.state.CurrentValue = currentCodel.Size;
-
-            var willContinue = FindExit(0);
+                willContinue = FindExit(0);
+            }
+            else willContinue = false;
 
             return willContinue;
         }

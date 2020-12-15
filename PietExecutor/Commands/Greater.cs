@@ -9,7 +9,7 @@ namespace PietExecutor.Commands
 {
     class Greater : ICommand
     {
-        public void Execute(ExecutionState state)
+        public bool Execute(ExecutionState state)
         {
             var stack = state.Stack;
 
@@ -17,6 +17,8 @@ namespace PietExecutor.Commands
             {
                 stack.Push(stack.Pop() < stack.Pop() ? 1 : 0);
             }
+
+            return true;
         }
     }
 }

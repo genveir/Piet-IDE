@@ -9,6 +9,6 @@ namespace PietExecutor.Commands
 {
     interface ICommand
     {
-        void Execute(ExecutionState state);
+        bool Execute(ExecutionState state);
     }
 }

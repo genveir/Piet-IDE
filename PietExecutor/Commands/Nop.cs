@@ -9,9 +9,9 @@ namespace PietExecutor.Commands
 {
     class Nop : ICommand
     {
-        public void Execute(ExecutionState state)
+        public bool Execute(ExecutionState state)
         {
-            
+            return true;
         }
     }
 }

@@ -9,9 +9,11 @@ namespace PietExecutor.Commands
 {
     class Push : ICommand
     {
-        public void Execute(ExecutionState state)
+        public bool Execute(ExecutionState state)
         {
             state.Stack.Push(state.CurrentValue);
+
+            return true;
         }
     }
 }

@@ -9,13 +9,17 @@ namespace PietExecutor.Commands
 {
     class InChar : ICommand
     {
-        public void Execute(ExecutionState state)
+        public bool Execute(ExecutionState state)
         {
+            if (!state.IO.HasRead()) return false;
+
             var stack = state.Stack;
 
             char read = state.IO.Read();
 
             stack.Push(read);
+
+            return true;
         }
     }
 }

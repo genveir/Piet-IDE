@@ -9,7 +9,7 @@ namespace PietExecutor.Commands
 {
     class Divide : ICommand
     {
-        public void Execute(ExecutionState state)
+        public bool Execute(ExecutionState state)
         {
             var stack = state.Stack;
 
@@ -20,6 +20,8 @@ namespace PietExecutor.Commands
 
                 if (val1 != 0) stack.Push(val2 / val1);
             }
+
+            return true;
         }
     }
 }

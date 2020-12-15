@@ -9,7 +9,7 @@ namespace PietExecutor.Commands
 {
     class Duplicate : ICommand
     {
-        public void Execute(ExecutionState state)
+        public bool Execute(ExecutionState state)
         {
             var stack = state.Stack;
 
@@ -20,6 +20,8 @@ namespace PietExecutor.Commands
                 stack.Push(val);
                 stack.Push(val);
             }
+
+            return true;
         }
     }
 }

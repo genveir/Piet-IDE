@@ -9,7 +9,7 @@ namespace PietExecutor.Commands
 {
     class OutChar : ICommand
     {
-        public void Execute(ExecutionState state)
+        public bool Execute(ExecutionState state)
         {
             var stack = state.Stack;
 
@@ -17,6 +17,8 @@ namespace PietExecutor.Commands
             {
                 state.IO.WriteChar((char)stack.Pop());
             }
+
+            return true;
         }
     }
 }

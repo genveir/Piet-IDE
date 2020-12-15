@@ -9,8 +9,10 @@ namespace PietExecutor.Commands
 {
     class InNumber : ICommand
     {
-        public void Execute(ExecutionState state)
+        public bool Execute(ExecutionState state)
         {
+            if (!state.IO.HasRead()) return false;
+
             var stack = state.Stack;
 
             var read = state.IO.Read().ToString();
@@ -20,6 +22,8 @@ namespace PietExecutor.Commands
             {
                 stack.Push(num);
             }
+
+            return true;
         }
     }
 }
