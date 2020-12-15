@@ -58,9 +58,7 @@ namespace Piet_IDE
         {
             img = new Bitmap(this.Width, this.Height);
 
-            drawingState = new DrawingState(10, 10);
-
-            this.Invalidate();
+            NewImage(10, 10);
         }
 
         Bitmap img;
@@ -118,7 +116,9 @@ namespace Piet_IDE
         {
             var clickPos = e.Location;
 
-            if (clickPos == _mdPos)
+            var dragDistance = Math.Abs(clickPos.X - _mdPos.X) + Math.Abs(clickPos.Y - _mdPos.Y);
+
+            if (dragDistance < 10)
             {
                 var dsWidth = drawingState.GetWorkingCanvas().Width;
                 var dsHeight = drawingState.GetWorkingCanvas().Height;
@@ -169,6 +169,18 @@ namespace Piet_IDE
             var executor = new PietRunner(program, io, stack);
 
             executor.Run();
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewForm.GetOrCreate(NewImage).Show();
+        }
+
+        private void NewImage(int width, int height)
+        {
+            drawingState = new DrawingState(width, height);
+
+            this.Invalidate();
         }
     }
 }
